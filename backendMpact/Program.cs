@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using backendMpact.Data;
 using backendMpact.Repositories;
 using backendMpact.Services;
@@ -8,10 +9,20 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Database
+=======
+using backendMpact.Data;
+using backendMpact.Repositories;
+using backendMpact.Services;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+<<<<<<< HEAD
 // DI
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -74,6 +85,17 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Middleware
+=======
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -81,8 +103,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+<<<<<<< HEAD
 app.UseAuthentication(); // ✅ Must come before Authorization
 app.UseAuthorization();
 
+=======
+app.UseAuthorization();
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 app.MapControllers();
 app.Run();

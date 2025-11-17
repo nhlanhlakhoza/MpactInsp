@@ -49,6 +49,7 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+<<<<<<< HEAD
 .login-background {
   
     background-image: url('/images/background.jpg') !important;
@@ -72,3 +73,5 @@ h1:focus {
     .btn-custom:hover {
         background-color: #a9cb6b !important;
     }
+=======
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72

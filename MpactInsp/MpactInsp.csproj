@@ -6,9 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <None Include="wwwroot\Images\Mpact-Plastics-Logo.jpg" />
     <None Include="wwwroot\Images\pakata-goh-RDolnHtjVCY-unsplash.jpg" />
   </ItemGroup>
 
+=======
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 </Project>

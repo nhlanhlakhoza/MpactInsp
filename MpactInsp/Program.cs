@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+<<<<<<< HEAD
 builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7272/") });
 builder.Services.AddHttpClient(); 
@@ -16,6 +17,9 @@ builder.Services.AddAntiforgery(options =>
     options.HeaderName = "X-CSRF-TOKEN";
     options.SuppressXFrameOptionsHeader = false;
 });
+=======
+
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +35,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+<<<<<<< HEAD
 app.MapRazorComponents<App>();
+=======
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 
 app.Run();

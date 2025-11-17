@@ -25,6 +25,7 @@ namespace backendMpact.Services
 
         }
 
+<<<<<<< HEAD
        public async Task<string> CreateUser(RegisterRequest request, string addedByEmail)
 {
     var existingUser = await _repo.GetByEmailAsync(request.Email);
@@ -62,6 +63,31 @@ namespace backendMpact.Services
             return Convert.ToBase64String(hash);
         }
 
+=======
+        //register Admin/Manager
+        public async Task CreateUser(RegisterRequest request)
+        {
+            //  Hash the password here
+            using var sha = SHA256.Create();
+            var bytes = Encoding.UTF8.GetBytes(request.Password);
+            var hash = sha.ComputeHash(bytes);
+            var hashedPassword = Convert.ToBase64String(hash);
+
+            // Convert DTO → User model
+            var user = new User
+            {
+
+                Email = request.Email,
+                FullName=request.FullName,
+                LastName=request.LastName,
+                Password = hashedPassword,
+                Role = "Admin"
+            };
+
+            //  Save to database
+            _repo.Add(user);
+        }
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 
         public Task<bool> UserExists(string email)
         {
@@ -120,6 +146,7 @@ namespace backendMpact.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+<<<<<<< HEAD
 
         public async Task SeedFirstAdmin()
         {
@@ -144,4 +171,7 @@ namespace backendMpact.Services
     }
 
 
+=======
+    }
+>>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 }
