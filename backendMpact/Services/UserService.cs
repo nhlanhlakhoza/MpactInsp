@@ -25,45 +25,6 @@ namespace backendMpact.Services
 
         }
 
-<<<<<<< HEAD
-       public async Task<string> CreateUser(RegisterRequest request, string addedByEmail)
-{
-    var existingUser = await _repo.GetByEmailAsync(request.Email);
-    if (existingUser != null)
-        return "User with this email already exists";
-
-    // Only admins can add new users
-    var addingUser = await _repo.GetByEmailAsync(addedByEmail);
-    if (addingUser == null || addingUser.Role != "Admin")
-        return "Only admins can add new users";
-
-    string role = request.RoleSelection == 1 ? "Admin" : "Inspector";
-
-    var user = new User
-    {
-        Email = request.Email,
-        FullName = request.FullName,
-        LastName = request.LastName,
-        Role = role,
-        Password = HashPassword(request.Password)
-    };
-
-    await _repo.Add(user);
-
-    return $"User '{user.FullName}' created successfully with role {role}";
-}
-
-
-        //  Hashing method
-        private string HashPassword(string password)
-        {
-            using var sha = SHA256.Create();
-            var bytes = Encoding.UTF8.GetBytes(password);
-            var hash = sha.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
-        }
-
-=======
         //register Admin/Manager
         public async Task CreateUser(RegisterRequest request)
         {
@@ -87,7 +48,6 @@ namespace backendMpact.Services
             //  Save to database
             _repo.Add(user);
         }
->>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 
         public Task<bool> UserExists(string email)
         {
@@ -146,32 +106,5 @@ namespace backendMpact.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-<<<<<<< HEAD
-
-        public async Task SeedFirstAdmin()
-        {
-            var anyUser = await _repo.AnyUserExists();
-            if (!anyUser)
-            {
-                var firstAdmin = new User
-                {
-                    Email = "first.admin@system.com",
-                    FullName = "System Admin",
-                    LastName = "Admin",
-                    Role = "Admin",
-                    Password = HashPassword("Admin@123")
-                };
-
-                await _repo.Add(firstAdmin);
-                Console.WriteLine("First admin created successfully!");
-            }
-        }
-
-
     }
-
-
-=======
-    }
->>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
 }

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
-=======
->>>>>>> c574684fc32a87db64fc2c3af5d90b6f6f83ce72
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
